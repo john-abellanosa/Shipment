@@ -246,7 +246,7 @@ Route::delete('/port/{id}', [RatesController::class, 'destroy_port'])->name('por
 Route::put('/port/update-status/{id}', [RatesController::class, 'updateStatus']);
 
 Route::get('/admin/pages/accounts/user', [UserController::class, 'index'])->name('admin.pages.accounts.user');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('branch.destroy');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::post('admin/pages/rates/categories', [CategoryController::class, 'store_category'])->name('categories.store');
 Route::get('admin/pages/rates/categories', [CategoryController::class, 'index'])->name('admin.pages.rates.categories');
