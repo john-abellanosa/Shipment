@@ -12,7 +12,7 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        scroll-behavior: smooth; 
+        scroll-behavior: smooth;  
     }
 
     .navbar {
@@ -270,7 +270,7 @@
             <div></div>
         </div> 
         <div class="menu" id="sidebar-menu">
-            <a href="#home">Home</a>
+            <a href="#home" class="active">Home</a>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
             <a href="#routes">Routes</a>
@@ -369,6 +369,51 @@
                 margin: 3px 0;
             }
         }
+        
+        
+        /* Base style for navbar links */
+        .navbar .menu a {
+            position: relative;
+            padding-bottom: 4px; /* keeps underline close to text */
+        }
+        
+        /* Underline (hidden by default) */
+        .navbar .menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;        /* underline sticks to the word */
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #00bcd4;  /* underline color */
+            border-radius: 2px;
+            transition: width 0.25s ease;
+        }
+        
+        /* Hover effect */
+        .navbar .menu a:hover {
+            color: #00bcd4;  /* hover color */
+        }
+        .navbar .menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* Active link */
+        .navbar .menu a.active {
+            color: #00bcd4;   /* active link color */
+        }
+        
+        .navbar .menu a.active::after {
+            width: 100%; /* underline always visible when active */
+        }
+        
+        /* MOBILE — make underline a little thicker */
+        @media (max-width: 768px) {
+            .navbar .menu a {
+                display: inline-block; /* Instead of block */
+                width: auto;
+            }
+        }
     </style>
     
     <script>
@@ -428,24 +473,24 @@
             });
         })();
     </script>
-    
-
-        <script> 
-            let lastScrollTop = 0;   
-            const navbar = document.querySelector('.navbar'); 
-
-            window.addEventListener('scroll', function() {
-                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;  
-
-                if (currentScroll > lastScrollTop) { 
-                    navbar.style.transform = 'translateY(-100%)';  
-                } else { 
-                    navbar.style.transform = 'translateY(0)';  
-                }
-
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;  
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(".navbar .menu a");
+        
+            links.forEach(link => {
+                link.addEventListener("click", function () {
+        
+                    // remove active from all
+                    links.forEach(l => l.classList.remove("active"));
+        
+                    // add active to clicked
+                    this.classList.add("active");
+                });
             });
-        </script>
+        });
+    </script>
+
+     
 
         <style>
             .hero { 
@@ -667,8 +712,7 @@
             
             @media (max-width: 768px) {
                 .abouts {
-                    margin-right: 0;
-                    margin-bottom: 20px;  
+                    margin-right: 0; 
                 }
 
                 .about-us-description {
@@ -697,7 +741,7 @@
 
                 .about-image {
                     height: 300px;
-                    margin-top: 20px;
+                    margin-top: -50px;
                 }
 
                 .abouts {
@@ -721,9 +765,8 @@
 
 
         <style>
-            .about {
-                padding: 40px 20px;
-                background-color: #f8f8f8;
+            .abouts {
+                padding: 40px 0; 
             }
 
             .about-content {
@@ -741,9 +784,8 @@
             }
 
             .feature.right {
-                flex: 1;
-                text-align: justify;
-                padding: 20px;
+                flex: 1; 
+                text-align: justify;  
             }
 
             .feature.right h2 {
@@ -922,7 +964,7 @@
 
             @media screen and (max-width: 480px) {
                 .services {
-                    padding: 30px 30px;
+                    padding: 50px 30px;
                 }
 
                 .service-card {
@@ -1544,7 +1586,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between; 
-                padding: 20px 110px; 
+                padding: 70px 110px; 
                 background: #fff;
                 border-top: 1px solid #ddd;  
             }
@@ -1718,7 +1760,7 @@
 
             @media (max-width: 768px) {
                 .contact-us {
-                    padding: 30px 10px;
+                    padding: 60px 10px;
                 }
 
                 .contact-info p {
@@ -1807,34 +1849,34 @@
             }
         </style>
 
-<div class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const backToTopButton = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', function() {
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
             
-            // Show button when scrolled down more than 300px
-            if (currentScrollPosition > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        // Scroll to top when button is clicked
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            window.addEventListener('scroll', function() {
+                const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Show button when scrolled down more than 300px
+                if (currentScrollPosition > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            // Scroll to top when button is clicked
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
