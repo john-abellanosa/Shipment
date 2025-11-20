@@ -12,7 +12,7 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        scroll-behavior: smooth;  
+        scroll-behavior: smooth; 
     }
 
     .navbar {
@@ -473,22 +473,49 @@
             });
         })();
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const links = document.querySelectorAll(".navbar .menu a");
-        
-            links.forEach(link => {
-                link.addEventListener("click", function () {
-        
-                    // remove active from all
-                    links.forEach(l => l.classList.remove("active"));
-        
-                    // add active to clicked
+            const sections = document.querySelectorAll("section[id], .hero[id]");
+            const navLinks = document.querySelectorAll(".navbar .menu a");
+    
+            function updateActiveLink() {
+                let currentSection = "";
+                const scrollPosition = window.scrollY + 150; // Offset for navbar height
+    
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute("id");
+                    }
+                });
+    
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${currentSection}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+    
+            // Update on scroll
+            window.addEventListener("scroll", updateActiveLink);
+    
+            // Update on click
+            navLinks.forEach(link => {
+                link.addEventListener("click", function() {
+                    navLinks.forEach(l => l.classList.remove("active"));
                     this.classList.add("active");
                 });
             });
+    
+            // Initial update
+            updateActiveLink();
         });
     </script>
+
 
      
 
