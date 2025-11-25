@@ -2,7 +2,7 @@
 @extends('teller.layout.layout')
 
 @section('title', 'My Profile')
-
+<link rel="icon" href="{{ asset('img/logo.png') }}">
 @section('content')
 <style>
     .profile-advanced-container {
