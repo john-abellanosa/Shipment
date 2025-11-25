@@ -632,6 +632,7 @@
         .panel-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 12px 15px;
             background-color: #1877F2;
             color: #fff;
@@ -1226,8 +1227,8 @@
     }
  
     .stub-logo {
-        width: 38px;
-        height: 38px;
+        width: 30px;
+        height: 30px;
     }
  
     .company-name {
@@ -1302,23 +1303,25 @@
         }
 
         .stub-header {
-            flex-direction: column;  
-            text-align: center;
-            padding-top: 20px;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            text-align: left !important;
+            padding-top: 40px !important;
         }
 
         .company-info {
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row !important;
+            align-items: center !important;
         }
 
         .stub-logo {
-            width: 50px;
-            height: 50px;
+            width: 26px !important;
+            height: 26px !important;
         }
 
         .company-name {
-            font-size: 1.5em;
+            font-size: 1.7em !important;  
         }
 
         .claim-title {

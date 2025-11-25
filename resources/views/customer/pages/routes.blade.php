@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <style>
     .wrapper {
@@ -40,8 +41,8 @@
     @media (max-width: 480px) {
         .message-container h2 {
             font-size: 24px;
-            font-weight: 300;
-            margin-top: 20px; 
+            font-weight: 400;
+            margin-top: 10px; 
         }
 
         .message-container p {

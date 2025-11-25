@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 <style>
     :root {
         --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -95,10 +96,12 @@
         }
         .dashboard-title {
             font-size: 1.5rem;
+            font-weight: 400;
         }
 
         .dashboard-subtitle {
             font-size: 0.9rem;
+            text-align: left;
         }
     }
  

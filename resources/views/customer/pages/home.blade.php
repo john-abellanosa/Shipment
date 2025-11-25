@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 <style>
     .about-section {
         background-color: #fff;
@@ -129,7 +130,7 @@
     .about-navi-cargo-text h2 {
         color: #000;
         font-size: 28px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-weight: 100;
     }
 
@@ -174,7 +175,8 @@
         }
 
         .about-navi-cargo-text h2 {
-            font-size: 20px;
+            font-size: 25px;
+            font-weight: 400;
         }
 
         .about-navi-cargo-text p {
@@ -247,7 +249,7 @@
         }
 
         .welcome-message h1 {
-            font-size: 1.6rem;
+            font-size: 1.6rem; 
         }
 
         .welcome-message p {
@@ -269,6 +271,7 @@
         .why-choose h2,
         .scroll-content h2 {
             font-size: 1.3rem;
+            font-weight: 400;
         }
 
         .about-section p,
@@ -279,15 +282,27 @@
         }
 
         .welcome-message {
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .welcome-message h1 {
             font-size: 1.4rem;
+            font-weight: 400;
         }
 
         .welcome-message p {
             font-size: 0.95rem;
+        }
+    }
+    
+    .mobile-break {
+        display: none;
+    }
+    
+    @media (max-width: 480px) {
+        .mobile-break {
+            display: block; /* forces line break */
+            height: 0;
         }
     }
 </style>
@@ -297,7 +312,7 @@
     <div class="about-section">
         <div class="welcome-message">
             <div class="welcome-message-text">
-                <h1>Hi {{ Auth::user()->fname }}, Welcome to Navi Cargo</h1>
+                <h1>Hi {{ Auth::user()->fname }},<span class="mobile-break"></span> Welcome to Navi Cargo</h1>
                 <p>
                     We're thrilled to have you with us. At Navi Cargo, we’re dedicated to providing a smooth and reliable shipping experience tailored to your needs. Whether you’re managing frequent shipments or sending a one-time package, our team is here to support you every step of the way. Let’s move forward together with confidence and convenience.
                 </p>

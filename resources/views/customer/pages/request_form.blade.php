@@ -35,7 +35,7 @@
             border-radius: 8px;
         }
 
-        h2 {
+        .subtopbar h2 {
             color: #000;
             margin-bottom: 20px;
             font-size: 1.6rem;
@@ -206,6 +206,7 @@
         .category {
             position: relative;
             width: 100%;
+            max-width: 400px;
         }
 
         .category select {
@@ -255,12 +256,20 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: clamp(0.9rem, 2vw, 1rem);
-            width: 100%;
-            max-width: 300px;
+            max-width: 200px;
+            width: auto; /* Desktop default */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+
+        /* Full width only on mobile */
+        @media (max-width: 600px) {
+            .add-category-btn {
+                width: 100%;
+                max-width: 100%;
+            }
         }
 
         .add-category-btn:hover {
@@ -276,20 +285,21 @@
         .remove-category-btn {
             margin-top: clamp(8px, 2vw, 10px);
             padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px);
-            background-color: white;
-            color: #000;
-            border: 1px solid #000;
-            transition: all 0.3s;
+            background-color: #cd2b2b;  
+            color: white;  
+            border: none;
+            transition: all 0.3s ease;
             border-radius: 6px;
             font-size: clamp(0.85rem, 2vw, 0.95rem);
-            width: 100%;
+            max-width: 150px;  
+            width: auto;  
             cursor: pointer;
         }
 
         .remove-category-btn:hover {
-            background-color: #f5f8ff;
-            color: #000;
-            box-shadow: 0 4px 8px rgba(66, 133, 244, 0.15);
+            background-color: #8e1010;  
+            color: white;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
             transform: translateY(-2px);
         }
 
@@ -635,24 +645,6 @@
             .step-buttons {
                 margin-top: 10px;
                 gap: 8px;
-            }
-        }
-
-        /* Touch-friendly adjustments */
-        @media (hover: none) and (pointer: coarse) {
-            input,
-            select,
-            button {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            .btn-submit,
-            .btn-back,
-            .btn-next,
-            .swapButton,
-            .add-category-btn {
-                min-height: 48px;
             }
         }
     </style>
