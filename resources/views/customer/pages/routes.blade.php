@@ -14,8 +14,7 @@
         max-width: 1170px;
         padding-top: 10px;
     }
-    .message-container {  
-        margin-bottom: 35px;
+    .message-container {   
         border-radius: 10px; 
         position: relative;
         overflow: hidden;
@@ -41,6 +40,12 @@
     @media (max-width: 480px) {
         .message-container h2 {
             font-size: 24px;
+            font-weight: 300;
+            margin-top: 20px; 
+        }
+
+        .message-container p {
+            font-size: 13px !important; 
         }
     }
 
@@ -288,6 +293,42 @@
     @media (max-width: 480px) {
         .wrapper {
             padding: 10px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .rates-container {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .rate-item {
+            font-size: 14px; 
+        }
+    }
+
+    @media (max-width: 480px) {
+        .rates-container {
+            grid-template-columns: 1fr;  
+            gap: 15px;
+        }
+
+        .rate-item {
+            font-size: 13px; 
+        }
+
+        .rate-header {
+            font-size: 16px;  
+            padding: 14px 18px;
+        }
+
+        .rate-price {
+            font-size: 16px;
+        }
+
+        .request-quote-btn {
+            font-size: 14px;
+            padding: 10px 16px;
         }
     }
 </style>

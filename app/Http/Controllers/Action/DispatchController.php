@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\InTransitShipment;
 use App\Models\DispatchedShipment;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ShipmentDispatchedMail;
 
 class DispatchController extends Controller
 {
@@ -43,7 +45,10 @@ class DispatchController extends Controller
                     ]);
                 }
     
-              $shipment->delete();
+                // Send email
+                Mail::to($shipment->email)->send(new ShipmentDispatchedMail($shipment));
+
+                $shipment->delete();
             }
     
             return redirect()->route('teller.pages.in_transit')->with('success', 'Shipment Dispatched.');

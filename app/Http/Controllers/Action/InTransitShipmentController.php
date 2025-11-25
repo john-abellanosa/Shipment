@@ -14,6 +14,8 @@ use App\Models\InTransitShipment;
 use App\Models\Notification;
 use App\Models\Rates;
 use App\Models\ClaimStub;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ShipmentInTransitMail;
 
 class InTransitShipmentController extends Controller
 {
@@ -79,6 +81,9 @@ class InTransitShipmentController extends Controller
                         'message' => "Your shipment number {$shipment->shipment_id} is now In Transit."
                     ]);
                 }
+
+                // Send In Transit email
+                Mail::to($shipment->email)->send(new ShipmentInTransitMail($shipment, $expectedDeliveryDate));
     
                 $shipment->delete();  
             }

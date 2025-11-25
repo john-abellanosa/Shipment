@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Queued;
 use App\Models\ApprovedRequest;
 use App\Models\Notification;
+use App\Mail\ShipmentRescheduledMail;
+use App\Mail\ShipmentReadyforDispatchMail;
+use Illuminate\Support\Facades\Mail;
 
 class QueuedController extends Controller
 {
@@ -42,6 +45,9 @@ class QueuedController extends Controller
                     'message' => "Your shipment number {$shipment->shipment_id} is now Ready for Dispatch."
                 ]);
             }
+
+                // Send email
+                Mail::to($shipment->email)->send(new ShipmentReadyforDispatchMail($shipment));
 
                 $shipment->delete();
             }
@@ -93,6 +99,10 @@ class QueuedController extends Controller
                     'message' => $message
                 ]);
             }
+
+            // Send email
+            Mail::to($shipment->email)->send(new ShipmentRescheduledMail($shipment, $formattedDate));
+
         }
 
         return redirect()->back()->with('success', 'Dispatch date updated successfully.');

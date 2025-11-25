@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\DispatchedShipment;
 use App\Models\Notification;
 use App\Models\UnclaimShipment;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ShipmentUnclaimedMail;
 
 class UnclaimController extends Controller
 {
@@ -47,6 +49,9 @@ class UnclaimController extends Controller
                         'message' => "Your shipment number {$shipment->shipment_id} was not claimed by your receiver."
                     ]);
                 }
+
+                // Send email
+                Mail::to($shipment->email)->send(new ShipmentUnclaimedMail($shipment));
 
                 $shipment->delete();
             }

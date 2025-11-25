@@ -260,6 +260,7 @@
         }
     }
 </style>
+@stack('head')
 </head>
 <body>
   
@@ -1936,5 +1937,6 @@
             });
         });
     </script>
+@stack('scripts')
 </body>
 </html>

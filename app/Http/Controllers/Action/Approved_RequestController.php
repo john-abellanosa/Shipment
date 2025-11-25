@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Submitted_Request;
 use App\Models\ApprovedRequest;
 use App\Models\Notification;
+use App\Mail\ShipmentApprovedMail;
+use Illuminate\Support\Facades\Mail;
 
 class Approved_RequestController extends Controller
 {
@@ -66,7 +68,10 @@ class Approved_RequestController extends Controller
                 'message' => "Your shipment number {$shipment->shipment_id} is successfully approved. You may now deliver your item to the nearest Navi Cargo branch in your area."
                 ]);
             }
-    
+            
+            // Send Email
+            Mail::to($shipment->email)->send(new ShipmentApprovedMail($shipment, $dispatchDate));
+
                 $shipment->delete();
             }
     

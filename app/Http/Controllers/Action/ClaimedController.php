@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\DispatchedShipment;
 use App\Models\Notification;
 use App\Models\ClaimedShipment;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ShipmentClaimedMail;
 
 class ClaimedController extends Controller
 {
@@ -47,6 +49,9 @@ class ClaimedController extends Controller
                         'message' => "Your receiver has successfully claimed shipment number {$shipment->shipment_id}."
                     ]);
                 }
+
+                // Send email
+                Mail::to($shipment->email)->send(new ShipmentClaimedMail($shipment));
 
                 $shipment->delete();
             }

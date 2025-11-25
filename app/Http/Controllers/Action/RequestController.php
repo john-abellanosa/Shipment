@@ -16,6 +16,8 @@ use App\Models\Submitted_Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ClaimedShipment;
 use App\Models\UnclaimShipment;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RequestSubmittedMail;
 
 class RequestController extends Controller
 {
@@ -75,6 +77,14 @@ class RequestController extends Controller
                 'weight' => $validated['weight'][$index] ?? '',
             ]);
         }
+
+        // SEND EMAIL
+        Mail::to($validated['email'])->send(
+            new RequestSubmittedMail(
+                $shipment_id,
+                $validated['fname'] . ' ' . $validated['lname']
+            )
+        );
 
         return redirect()->route('routes')->with('success', 'Request submitted successfully!');
     }

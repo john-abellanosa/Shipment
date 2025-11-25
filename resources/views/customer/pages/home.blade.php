@@ -261,7 +261,7 @@
         .intro, 
         .scroll-content, 
         .why-choose {
-            padding: 15px;
+            padding: 5px;
             border-radius: 8px;
         }
 
@@ -276,6 +276,10 @@
         .why-choose li {
             font-size: 0.95rem;
             line-height: 1.5;
+        }
+
+        .welcome-message {
+            margin-top: 20px;
         }
 
         .welcome-message h1 {

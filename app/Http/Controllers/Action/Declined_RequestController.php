@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Submitted_Request;
 use App\Models\DeclinedRequest;
 use App\Models\Notification;
+use App\Mail\ShipmentDeclinedMail;
+use Illuminate\Support\Facades\Mail;
 
 class Declined_RequestController extends Controller
 {
@@ -68,6 +70,9 @@ class Declined_RequestController extends Controller
                     ]);
                 }
     
+                // SEND EMAIL
+                Mail::to($shipment->email)->send(new ShipmentDeclinedMail($shipment, $declineReason));
+
                 $shipment->delete();
             }
     

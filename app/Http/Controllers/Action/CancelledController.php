@@ -11,6 +11,8 @@ use App\Models\ApprovedRequest;
 use App\Models\CancelledShipment;
 use App\Models\Submitted_Request;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ShipmentCancelledMail;
 
 class CancelledController extends Controller
 {
@@ -68,7 +70,10 @@ class CancelledController extends Controller
                         'message' => "Your shipment number {$shipment->shipment_id} has been cancelled. <br> Reason: {$cancelReason}"
                     ]);
                 }
-     
+
+                // Send cancellation email
+                Mail::to($shipment->email)->send(new ShipmentCancelledMail($shipment, $cancelReason));
+
                 $shipment->delete();
             }
     
