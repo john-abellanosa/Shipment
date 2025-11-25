@@ -23,8 +23,7 @@
         justify-content: center;
         align-items: center;
         padding: 0;   
-        margin: 0;
-        overflow-y: hidden;
+        margin: 0; 
     }
 
     .top-bar {
