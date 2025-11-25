@@ -47,10 +47,10 @@
     }
 
     .menu-icon {
-        font-size: 24px;
+        font-size: 22px !important;
         cursor: pointer;
         margin-right: 0px;
-        display: none;  
+        display: none;   
     }
 
     .logo {
@@ -206,7 +206,7 @@
         }
 
         .logo span {
-           display: none;s
+           display: none;
         } 
         .content {
             margin-left: 0;
@@ -242,7 +242,7 @@
         }
 
         .logo span {
-           display: none;s
+           display: none;
         }
 
         .top-bar-right {

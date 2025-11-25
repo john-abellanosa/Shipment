@@ -239,6 +239,35 @@
         margin-left: 15px;
         font-size: 14px;
     }
+
+    @media (max-width: 700px) {
+        .logo img {
+            height: 30px;  
+        }
+        .logo strong {
+            font-size: 28px;  
+        }
+    }
+
+    @media (max-width: 480px) {
+        main {
+            padding: 10px 2vw;
+            padding-top: 80px;
+            padding-bottom: 90px;
+        }
+
+        .register-intro h1 {
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .logo img {
+            height: 28px;  
+        }
+        .logo strong {
+            font-size: 26px;  
+        }
+    }
 </style>
 </head>
 <body>

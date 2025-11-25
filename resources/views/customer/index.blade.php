@@ -47,7 +47,7 @@
         }
     }
 
-    @media (max-width: 480px) { 
+    @media (max-width: 480px) {  
         .navbar { 
             padding: 10px 15px;
         }

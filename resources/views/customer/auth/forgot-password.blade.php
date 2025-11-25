@@ -187,8 +187,12 @@
         }
 
         @media (max-width: 480px) {
+            .logo img {
+                height: 28px;  
+            }
+            
             .logo strong {
-                font-size: 24px;
+                font-size: 26px;  
             }
 
             .forgot-card h2 {
