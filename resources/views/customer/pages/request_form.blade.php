@@ -675,6 +675,57 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("multiStepForm");
+            const submitButton = form.querySelector(".btn-submit");
+
+            submitButton.addEventListener("click", function(event) {
+                let isFormValid = true;
+
+                const senderFields = document.querySelectorAll('.sender input[required]');
+                senderFields.forEach(function(field) {
+                    if (field.value.trim() === "") {
+                        isFormValid = false;
+                    }
+                });
+
+                const cargoFields = document.querySelectorAll(
+                    '.shipment_info input[required], .shipment_info select[required]');
+                cargoFields.forEach(function(field) {
+                    if (field.value.trim() === "" || field.value === null) {
+                        isFormValid = false;
+                    }
+                });
+
+                if (!isFormValid) {
+                    event.preventDefault();
+                    if (isSenderIncomplete(senderFields)) {
+                        showAlert('Please fill out all required fields in the Sender Address section.');
+                    } else if (isCargoIncomplete(cargoFields)) {
+                        showAlert('Please fill out all required fields in the Cargo Details section.');
+                    }
+                }
+            });
+        });
+
+        function showAlert(alertId) {
+            document.getElementById(alertId).classList.add("show");
+        }
+
+        function closeAlert(alertId) {
+            document.getElementById(alertId).classList.remove("show");
+        }
+
+        function isSenderIncomplete(fields) {
+            return Array.from(fields).some(field => field.value.trim() === "");
+        }
+
+        function isCargoIncomplete(fields) {
+            return Array.from(fields).some(field => field.value.trim() === "" || field.value === null);
+        }
+    </script>
+
     @section('content')
         <div class="wrapper">
             <div class="container">
@@ -1019,57 +1070,6 @@
 
             // Initial trigger
             updateProgressSteps();
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const form = document.getElementById("multiStepForm");
-                const submitButton = form.querySelector(".btn-submit");
-
-                submitButton.addEventListener("click", function(event) {
-                    let isFormValid = true;
-
-                    const senderFields = document.querySelectorAll('.sender input[required]');
-                    senderFields.forEach(function(field) {
-                        if (field.value.trim() === "") {
-                            isFormValid = false;
-                        }
-                    });
-
-                    const cargoFields = document.querySelectorAll(
-                        '.shipment_info input[required], .shipment_info select[required]');
-                    cargoFields.forEach(function(field) {
-                        if (field.value.trim() === "" || field.value === null) {
-                            isFormValid = false;
-                        }
-                    });
-
-                    if (!isFormValid) {
-                        event.preventDefault();
-                        if (isSenderIncomplete(senderFields)) {
-                            showAlert('Please fill out all required fields in the Sender Address section.');
-                        } else if (isCargoIncomplete(cargoFields)) {
-                            showAlert('Please fill out all required fields in the Cargo Details section.');
-                        }
-                    }
-                });
-            });
-
-            function showAlert(alertId) {
-                document.getElementById(alertId).classList.add("show");
-            }
-
-            function closeAlert(alertId) {
-                document.getElementById(alertId).classList.remove("show");
-            }
-
-            function isSenderIncomplete(fields) {
-                return Array.from(fields).some(field => field.value.trim() === "");
-            }
-
-            function isCargoIncomplete(fields) {
-                return Array.from(fields).some(field => field.value.trim() === "" || field.value === null);
-            }
         </script>
 
         <script>
