@@ -219,7 +219,7 @@
         .category::after {
             content: "";
             position: absolute;
-            top: 50%;
+            top: 68%;
             right: clamp(10px, 2vw, 12px);
             transform: translateY(-50%);
             width: 0;
