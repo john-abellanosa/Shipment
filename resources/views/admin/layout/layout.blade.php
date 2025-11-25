@@ -17,8 +17,7 @@
     }
 
     body {
-        background-color: #f8f9fa;
-        overflow: hidden;
+        background-color: #f8f9fa; 
     }
 
     .container {
